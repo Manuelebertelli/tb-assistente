@@ -1,4 +1,4 @@
-<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>TB Assistente v3.3.1 Google Sync</title>
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>TB Assistente v3.3.2 Google Redirect Sync</title>
 <style>
 :root{--bg:#050506;--card:#151517;--line:#ffffff18;--txt:#f5f5f7;--mut:#9b9ba2;--g:#30d158;--r:#ff453a;--o:#ff9f0a;--y:#ffd60a}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;background:radial-gradient(circle at top right,#202a3a,#050506 42%);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;padding-bottom:74px}
@@ -68,13 +68,12 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithRedirect,
-  signInWithPopup,
   getRedirectResult,
   signOut,
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-const APP_VERSION = 'TB Assistente v.3.3.1';
+const APP_VERSION = 'TB Assistente v.3.3.2';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBQQvok7FB4DYidTA9qDOS6YXwysmThDUk",
@@ -88,6 +87,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
+auth.languageCode = 'it';
 let currentUser = null;
 let authReady = false;
 
@@ -147,28 +147,18 @@ async function waitTBA(){
 
 async function doLogin(){
   try{
-    setCloudStatus('Apertura login Google...', 'warn');
+    setCloudStatus('Reindirizzamento a Google in corso...', 'warn');
     if(loginBtn){
       loginBtn.disabled = true;
       loginBtn.textContent = 'Apro Google...';
+      loginBtn.style.pointerEvents = 'none';
     }
 
-    const isAppleMobile = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    await signInWithRedirect(auth, provider);
 
-    if(isAppleMobile){
-      await signInWithRedirect(auth, provider);
-      return;
-    }
-
-    try{
-      await signInWithRedirect(auth, provider);
-    }catch(popupError){
-      console.warn('Popup non riuscito, provo redirect:', popupError);
-      await signInWithRedirect(auth, provider);
-    }
   }catch(e){
     console.error('Google login error:', e);
-    setCloudStatus('Errore login Google: ' + e.message, 'bad');
+    setCloudStatus('Errore login Google: ' + e.code + ' — ' + e.message, 'bad');
     if(loginBtn){
       loginBtn.disabled = false;
       loginBtn.textContent = '🔐 Accedi con Google';
@@ -196,13 +186,19 @@ onAuthStateChanged(auth, (user)=>{
   setButtonState();
 });
 
-window.loginGoogle = async function () {
-  try {
-    const provider = new GoogleAuthProvider();
-    await signInWithRedirect(auth, provider);
-  } catch (e) {
-    console.error(e);
-    alert("Errore login Google: " + e.message);
+window.loginGoogle = doLogin;
+
+window.logoutGoogle = async function(){
+  try{
+    await signOut(auth);
+    currentUser = null;
+    setCloudStatus('Logout completato. Ora puoi riaccedere con Google.', 'warn');
+    setCloudMeta(APP_VERSION);
+    setButtonState();
+  }catch(e){
+    console.error('Google logout error:', e);
+    setCloudStatus('Errore logout: ' + e.message, 'bad');
+    setButtonState();
   }
 };
 
