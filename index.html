@@ -161,7 +161,7 @@ async function doLogin(){
     }
 
     try{
-      await signInWithPopup(auth, provider);
+      await signInWithRedirect(auth, provider);
     }catch(popupError){
       console.warn('Popup non riuscito, provo redirect:', popupError);
       await signInWithRedirect(auth, provider);
@@ -196,19 +196,13 @@ onAuthStateChanged(auth, (user)=>{
   setButtonState();
 });
 
-window.loginGoogle = doLogin;
-
-window.logoutGoogle = async function(){
-  try{
-    await signOut(auth);
-    currentUser = null;
-    setCloudStatus('Logout completato. Ora puoi riaccedere con Google.', 'warn');
-    setCloudMeta(APP_VERSION);
-    setButtonState();
-  }catch(e){
-    console.error('Google logout error:', e);
-    setCloudStatus('Errore logout: ' + e.message, 'bad');
-    setButtonState();
+window.loginGoogle = async function () {
+  try {
+    const provider = new GoogleAuthProvider();
+    await signInWithRedirect(auth, provider);
+  } catch (e) {
+    console.error(e);
+    alert("Errore login Google: " + e.message);
   }
 };
 
