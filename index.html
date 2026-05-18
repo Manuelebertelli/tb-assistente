@@ -1,484 +1,158 @@
-<!doctype html>
-<html lang="it">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>TB Assistente v3.2 Cloud</title>
-
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>TB Assistente v3.2 Cloud</title>
 <style>
-:root{
---bg:#050506;
---card:#151517;
---line:#ffffff18;
---txt:#f5f5f7;
---mut:#9b9ba2;
---g:#30d158;
---r:#ff453a;
---o:#ff9f0a;
---y:#ffd60a;
-}
-
-*{
-box-sizing:border-box;
--webkit-tap-highlight-color:transparent;
-}
-
-body{
-margin:0;
-background:radial-gradient(circle at top right,#202a3a,#050506 42%);
-color:var(--txt);
-font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;
-padding-bottom:74px;
-}
-
-button,input,select,textarea{
-font:inherit;
-}
-
-button{
-border:0;
-border-radius:16px;
-padding:12px 14px;
-min-height:44px;
-font-weight:800;
-background:#f5f5f7;
-color:#050506;
-cursor:pointer;
-}
-
-button.secondary{
-background:#252529;
-color:#fff;
-border:1px solid var(--line);
-}
-
-input,select,textarea{
-width:100%;
-background:#101012;
-color:#fff;
-border:1px solid var(--line);
-border-radius:16px;
-padding:12px;
-min-height:44px;
-}
-
-label{
-display:block;
-margin:12px 0 6px;
-color:var(--mut);
-font-size:12px;
-font-weight:700;
-}
-
-header{
-position:sticky;
-top:0;
-z-index:30;
-background:#050506cc;
-backdrop-filter:blur(22px);
-border-bottom:1px solid var(--line);
-padding-top:env(safe-area-inset-top);
-}
-
-.top{
-display:flex;
-gap:10px;
-align-items:center;
-padding:12px 14px;
-}
-
-.grow{
-flex:1;
-}
-
-.title{
-font-weight:900;
-}
-
-.sub{
-font-size:12px;
-color:var(--mut);
-}
-
-main{
-padding:14px;
-max-width:850px;
-margin:auto;
-}
-
-.card{
-background:linear-gradient(180deg,#18181b,#111113);
-border:1px solid var(--line);
-border-radius:24px;
-padding:16px;
-margin-bottom:14px;
-box-shadow:0 20px 60px #0008;
-}
-
-.row{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-}
-
-.btnrow{
-display:flex;
-gap:9px;
-flex-wrap:wrap;
-}
-
-.btnrow>*{
-flex:1;
-}
-
-.companyItem{
-display:grid;
-grid-template-columns:34px 1fr auto;
-gap:10px;
-align-items:center;
-background:#111113;
-border:1px solid var(--line);
-border-radius:20px;
-padding:12px;
-margin-bottom:9px;
-}
-
-.starbtn{
-width:34px;
-height:34px;
-padding:0;
-border-radius:12px;
-background:#242428;
-color:#666;
-}
-
-.starbtn.on{
-color:var(--y);
-background:#3a3109;
-}
-
-.status{
-border-radius:18px;
-padding:12px;
-border:1px solid var(--line);
-background:#111113;
-}
-
-.status.ok{
-background:#0d2515;
-border-color:#30d15855;
-color:#c7ffd5;
-}
-
-.status.bad{
-background:#2a1110;
-border-color:#ff453a55;
-color:#ffd1cf;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-<div class="top">
-<div class="grow">
-<div class="title">TB Assistente v3.2 ☁️</div>
-<div class="sub">Firebase Cloud Save attivo</div>
-</div>
-</div>
-</header>
-
+:root{--bg:#050506;--card:#151517;--line:#ffffff18;--txt:#f5f5f7;--mut:#9b9ba2;--g:#30d158;--r:#ff453a;--o:#ff9f0a;--y:#ffd60a}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;background:radial-gradient(circle at top right,#202a3a,#050506 42%);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;padding-bottom:74px}
+button,input,select,textarea{font:inherit}button{border:0;border-radius:16px;padding:12px 14px;min-height:44px;font-weight:800;background:#f5f5f7;color:#050506}button.secondary{background:#252529;color:#fff;border:1px solid var(--line)}input,select,textarea{width:100%;background:#101012;color:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;min-height:44px}textarea{min-height:78px}label{display:block;margin:12px 0 6px;color:var(--mut);font-size:12px;font-weight:700}
+header{position:sticky;top:0;z-index:30;background:#050506cc;backdrop-filter:blur(22px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top)}.top{display:flex;gap:10px;align-items:center;padding:12px 14px}.icon{width:44px;height:44px;padding:0;border-radius:16px;background:#1c1c1e;color:#fff;border:1px solid var(--line)}.grow{flex:1}.title{font-weight:900}.sub{font-size:12px;color:var(--mut)}.chip{font-size:11px;background:#1c1c1e;color:#aaa;border:1px solid var(--line);border-radius:999px;padding:8px 10px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--o);margin-right:5px}.dot.ok{background:var(--g)}.dot.bad{background:var(--r)}
+main{padding:14px;max-width:850px;margin:auto}.view{display:none}.view.active{display:block}.card{background:linear-gradient(180deg,#18181b,#111113);border:1px solid var(--line);border-radius:24px;padding:16px;margin-bottom:14px;box-shadow:0 20px 60px #0008}.hero{border-radius:30px;background:radial-gradient(circle at top right,#2d3748,#151517 48%,#101012);padding:18px;margin-bottom:14px;border:1px solid #ffffff1f}h2{margin:0 0 12px;font-size:22px;letter-spacing:-.05em}.small{font-size:12px;color:var(--mut)}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btnrow{display:flex;gap:9px}.btnrow>*{flex:1}
+.favgrid{display:grid;grid-template-columns:1fr;gap:10px}.favcard{background:#111113;border:1px solid var(--line);border-radius:22px;padding:13px;display:grid;grid-template-columns:1fr 110px;gap:10px;align-items:center}.ticker{font-size:20px;font-weight:950}.star{color:var(--y);font-size:22px}.signal{font-size:12px;font-weight:900;border-radius:999px;background:#252528;padding:6px 8px}.long{color:var(--g)}.short{color:var(--r)}.wait{color:var(--o)}.score{font-size:30px;font-weight:950}.chartmini{height:66px;border-radius:15px;background:#08080a;border:1px solid var(--line);overflow:hidden}.chartmini svg{width:100%;height:100%}
+.companyItem{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;background:#111113;border:1px solid var(--line);border-radius:20px;padding:12px;margin-bottom:9px}.starbtn{width:34px;height:34px;min-height:34px;padding:0;border-radius:12px;background:#242428;color:#666}.starbtn.on{color:var(--y);background:#3a3109}
+.status{border-radius:18px;padding:12px;border:1px solid var(--line);background:#111113}.status.ok{background:#0d2515;border-color:#30d15855;color:#c7ffd5}.status.bad{background:#2a1110;border-color:#ff453a55;color:#ffd1cf}.status.warn{background:#2b1d07;border-color:#ff9f0a55;color:#ffe2aa}.cloudBox{margin-top:14px;border-top:1px solid var(--line);padding-top:14px}.cloudGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.cloudMeta{font-size:11px;color:var(--mut);margin-top:8px;word-break:break-all}
+.drawer{position:fixed;inset:0;display:none;z-index:90}.drawer.show{display:block}.scrim{position:absolute;inset:0;background:#000a}.panel{position:absolute;left:0;top:0;bottom:0;width:min(84vw,330px);background:#0d0d0fcc;backdrop-filter:blur(24px);border-right:1px solid var(--line);padding:calc(18px + env(safe-area-inset-top)) 14px}.menu button{width:100%;margin-bottom:9px;text-align:left;background:#18181b;color:#fff;border:1px solid var(--line)}.fab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:40;width:56px;height:56px;padding:0;border-radius:21px}
+@media(min-width:700px){.favgrid{grid-template-columns:1fr 1fr}.favcard{grid-template-columns:1fr 130px}}
+</style></head><body>
+<header><div class="top"><button class="icon" data-action="menu">☰</button><div class="grow"><div class="title" id="title">TB Assistente</div><div class="sub" id="subtitle">Dashboard + Firebase Cloud Save</div></div><button class="chip" data-view="data"><span class="dot" id="dataDot"></span><span id="dataText">Dati</span></button></div></header>
 <main>
-
-<div class="card">
-<h2>☁️ Cloud Sync</h2>
-
-<div class="btnrow">
-<button onclick="saveCloud(state)">
-☁️ Salva Online
-</button>
-
-<button class="secondary" onclick="loadCloudData()">
-☁️ Carica Online
-</button>
-</div>
-
-<div id="cloudStatus" class="status" style="margin-top:12px">
-Firebase pronto...
-</div>
-</div>
-
-<div class="card">
-<h2>🏢 Anagrafica aziende</h2>
-
-<div class="row">
-<div>
-<label>Ticker</label>
-<input id="cTicker" placeholder="NVDA">
-</div>
-
-<div>
-<label>Mercato</label>
-<input id="cMarket" placeholder="USA">
-</div>
-</div>
-
-<label>Nome azienda</label>
-<input id="cName" placeholder="NVIDIA Corp">
-
-<div class="row">
-<div>
-<label>Settore</label>
-<input id="cSector" placeholder="AI / Semiconduttori">
-</div>
-
-<div>
-<label>Preferito</label>
-<select id="cFav">
-<option value="true">Sì ⭐</option>
-<option value="false">No</option>
-</select>
-</div>
-</div>
-
-<label>Note</label>
-<input id="cNotes" placeholder="Perché la monitoro?">
-
-<div class="btnrow" style="margin-top:12px">
-<button onclick="addCompany()">
-Aggiungi / aggiorna
-</button>
-
-<button class="secondary" onclick="seed()">
-Default
-</button>
-</div>
-</div>
-
-<div class="card">
-<h2>📋 Lista aziende</h2>
-<div id="companyList"></div>
-</div>
-
-</main>
-
+<section id="dashboard" class="view active"><div class="hero"><div class="small">Dashboard preferiti</div><div style="font-size:34px;font-weight:950;letter-spacing:-.07em">Top monitoraggio</div><div class="small">Fino a 10 aziende preferite con mini-chart e score.</div><div class="btnrow" style="margin-top:14px"><button data-action="scan">Aggiorna preferiti</button><button class="secondary" data-view="companies">Anagrafica</button></div></div><div class="card"><h2>⭐ Preferiti in vista chart</h2><div id="favGrid" class="favgrid"></div></div></section>
+<section id="companies" class="view"><div class="card"><h2>Anagrafica aziende</h2><div class="row"><div><label>Ticker</label><input id="cTicker" placeholder="NVDA"></div><div><label>Mercato</label><input id="cMarket" placeholder="USA"></div></div><label>Nome azienda</label><input id="cName" placeholder="NVIDIA Corp"><div class="row"><div><label>Settore</label><input id="cSector" placeholder="Semiconduttori"></div><div><label>Preferito</label><select id="cFav"><option value="true">Sì ⭐</option><option value="false">No</option></select></div></div><label>Note</label><input id="cNotes" placeholder="Perché la monitoro?"><div class="btnrow" style="margin-top:12px"><button data-action="addCompany">Aggiungi / aggiorna</button><button class="secondary" data-action="seed">Default</button></div></div><div class="card"><h2>Lista aziende</h2><input id="search" placeholder="Cerca ticker, nome, settore..."><div id="companyList" style="margin-top:12px"></div></div></section>
+<section id="data" class="view"><div class="card"><h2>Dati esterni</h2><label>Provider</label><select id="provider"><option value="demo">Demo</option><option value="twelvedata">Twelve Data LIVE</option></select><label>API Key Twelve Data</label><input id="apiKey"><div class="row"><div><label>Intervallo</label><select id="interval"><option value="5min">5m</option><option value="15min" selected>15m</option><option value="30min">30m</option><option value="1h">1h</option><option value="1day">Daily</option></select></div><div><label>Refresh</label><select id="refresh"><option value="0">Off</option><option value="5">5m</option><option value="15">15m</option></select></div></div><div class="btnrow" style="margin-top:12px"><button data-action="test">Test API</button><button class="secondary" data-action="scan">Importa preferiti</button></div><div id="dataStatus" class="status warn" style="margin-top:12px">Dati non testati.</div><div class="cloudBox"><h2>☁️ Cloud Sync</h2><div class="small">Salva e recupera anagrafica, preferiti, dati e analisi su Firebase.</div><div class="cloudGrid" style="margin-top:12px"><button id="cloudSaveBtn" type="button">☁️ Salva Online</button><button id="cloudLoadBtn" type="button" class="secondary">☁️ Carica Online</button></div><div id="cloudStatus" class="status warn" style="margin-top:12px">Firebase in avvio...</div><div id="cloudMeta" class="cloudMeta"></div></div></div></section>
+<section id="detail" class="view"><div class="card"><h2 id="detailTitle">Dettaglio</h2><div id="detailBox"></div></div></section>
+</main><button class="fab" data-view="companies">⭐</button>
+<div id="drawer" class="drawer"><div class="scrim" data-action="closeMenu"></div><div class="panel"><h2>Menu</h2><div class="menu"><button data-view="dashboard">🏠 Dashboard</button><button data-view="companies">🏢 Anagrafica</button><button data-view="data">🔌 Dati esterni</button><button data-view="detail">📈 Dettaglio</button></div></div></div>
 <script>
-
-const $ = id => document.getElementById(id);
-
-let state = {
-companies: []
+(function(){const $=id=>document.getElementById(id);let state={companies:[],data:{},analysis:{},selected:null};let timer=null;
+function fmt(n,d=2){n=Number(n);return Number.isFinite(n)?n.toFixed(d):'-'}function cls(s){return s==='LONG'?'long':s==='SHORT'?'short':'wait'}
+function save(){['provider','apiKey','interval','refresh'].forEach(id=>localStorage.setItem('tba24_'+id,$(id).value));localStorage.setItem('tba24_state',JSON.stringify(state));timerSet()}
+function load(){try{let s=localStorage.getItem('tba24_state');if(s)state=JSON.parse(s)}catch(e){}['provider','apiKey','interval','refresh'].forEach(id=>{let v=localStorage.getItem('tba24_'+id);if(v!==null)$(id).value=v});if(!state.companies||!state.companies.length)seed(false)}
+function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));$(id).classList.add('active');$('drawer').classList.remove('show');let m={dashboard:['Dashboard','10 preferiti in vista chart'],companies:['Anagrafica','Aziende monitorate e stelline'],data:['Dati esterni','Provider e import'],detail:['Dettaglio','Scheda azienda']};$('title').textContent=m[id][0];$('subtitle').textContent=m[id][1];render()}
+function setData(k,t){$('dataDot').className='dot '+(k==='ok'?'ok':k==='bad'?'bad':'');$('dataText').textContent=t;$('dataStatus').className='status '+(k==='ok'?'ok':k==='bad'?'bad':'warn');$('dataStatus').textContent=t}
+function seed(alertIt=true){state.companies=[['NVDA','NVIDIA Corp','AI / Semiconduttori'],['TSLA','Tesla Inc','EV / Tech'],['AMD','Advanced Micro Devices','Semiconduttori'],['PLTR','Palantir Technologies','AI / Software'],['META','Meta Platforms','Big Tech'],['AAPL','Apple Inc','Big Tech'],['MSFT','Microsoft Corp','Cloud / AI'],['GOOGL','Alphabet Inc','Big Tech'],['AMZN','Amazon.com Inc','Cloud / E-commerce'],['AVGO','Broadcom Inc','Semiconduttori']].map(x=>({ticker:x[0],name:x[1],market:'USA',sector:x[2],favorite:true,notes:''}));save();render();if(alertIt)alert('Default caricati')}
+function addCompany(){let t=$('cTicker').value.trim().toUpperCase();if(!t)return alert('Ticker mancante');let c={ticker:t,name:$('cName').value.trim()||t,market:$('cMarket').value.trim()||'USA',sector:$('cSector').value.trim(),favorite:$('cFav').value==='true',notes:$('cNotes').value.trim()};let i=state.companies.findIndex(x=>x.ticker===t);if(i>=0)state.companies[i]=c;else state.companies.push(c);['cTicker','cName','cMarket','cSector','cNotes'].forEach(id=>$(id).value='');save();render()}
+function favs(){return state.companies.filter(c=>c.favorite).slice(0,10)}
+function toggleFav(t){let c=state.companies.find(x=>x.ticker===t);if(c)c.favorite=!c.favorite;save();render()}
+function gen(t){let seed=t.split('').reduce((a,c)=>a+c.charCodeAt(0),0),p=70+seed%180,a=[];for(let i=0;i<80;i++){let o=p,ch=(Math.sin((i+seed)/8)*.35)+(Math.random()-.47)*1.8,c=Math.max(2,o+ch);a.push({close:c,high:Math.max(o,c)+Math.random(),low:Math.min(o,c)-Math.random(),volume:500000+Math.random()*900000});p=c}return a}
+async function live(t){let key=$('apiKey').value.trim();if(!key)throw Error('API key mancante');let u=`https://api.twelvedata.com/time_series?symbol=${encodeURIComponent(t)}&interval=${$('interval').value}&outputsize=80&apikey=${encodeURIComponent(key)}`;let r=await fetch(u),j=await r.json();if(!j.values)throw Error(j.message||'API non valida');return j.values.reverse().map(o=>({close:+o.close,high:+o.high,low:+o.low,volume:+o.volume||0}))}
+function ema(a,p){let k=2/(p+1),o=[],pr=null;for(let i=0;i<a.length;i++){let v=a[i];if(i<p-1)o.push(null);else if(pr===null){pr=a.slice(i-p+1,i+1).reduce((x,y)=>x+y,0)/p;o.push(pr)}else{pr=v*k+pr*(1-k);o.push(pr)}}return o}
+function sma(a,p){return a.map((_,i)=>i<p-1?null:a.slice(i-p+1,i+1).reduce((x,y)=>x+y,0)/p)}
+function rsi(a,p=14){let o=Array(a.length).fill(null),g=0,l=0;for(let i=1;i<a.length;i++){let ch=a[i]-a[i-1],gg=Math.max(ch,0),ll=Math.max(-ch,0);if(i<=p){g+=gg;l+=ll;if(i===p)o[i]=100-100/(1+g/(l||1e-9))}else{g=(g*(p-1)+gg)/p;l=(l*(p-1)+ll)/p;o[i]=100-100/(1+g/(l||1e-9))}}return o}
+function analyze(t,d){let c=d.map(x=>x.close),v=d.map(x=>x.volume),e20=ema(c,20),e50=ema(c,50),rs=rsi(c),vm=sma(v,20),i=d.length-1,price=c[i],vr=vm[i]?v[i]/vm[i]:1,score=50,re=[];if(e20[i]>e50[i]){score+=18;re.push('trend rialzista')}else{score-=10;re.push('trend debole')}if(rs[i]>55&&rs[i]<75){score+=16;re.push('RSI buono')}else if(rs[i]<45){score-=12;re.push('RSI debole')}if(vr>1.15){score+=14;re.push('volume forte')}else if(vr<.75){score-=8;re.push('volume scarso')}score=Math.max(0,Math.min(100,score));let signal=score>=65&&e20[i]>e50[i]?'LONG':score>=65&&e20[i]<e50[i]?'SHORT':'ATTENDI';return{ticker:t,price,score,signal,rsi:rs[i],volRatio:vr,reasons:re}}
+async function scan(){setData('', 'Import preferiti...');let ok=0,fb=0;for(let c of favs()){try{let d=$('provider').value==='twelvedata'?await live(c.ticker):gen(c.ticker);state.data[c.ticker]=d;state.analysis[c.ticker]=analyze(c.ticker,d);ok++}catch(e){let d=gen(c.ticker);state.data[c.ticker]=d;state.analysis[c.ticker]=analyze(c.ticker,d);fb++}}setData(fb?'bad':'ok',fb?`Fallback demo ${fb}/${ok+fb}`:`LIVE OK ${ok} preferiti`);save();render()}
+async function test(){try{let t=favs()[0]?.ticker||'NVDA',d=$('provider').value==='twelvedata'?await live(t):gen(t);setData('ok',`Test OK ${t} · ${d.length} candele`)}catch(e){setData('bad','Errore API: '+e.message)}}
+function spark(t){let d=state.data[t]||gen(t),vals=d.map(x=>x.close),mn=Math.min(...vals),mx=Math.max(...vals),pts=vals.map((v,i)=>`${i/(vals.length-1)*110},${58-((v-mn)/(mx-mn||1))*54}`).join(' ');return `<svg viewBox="0 0 110 60" preserveAspectRatio="none"><polyline fill="none" stroke="#30d158" stroke-width="3" points="${pts}"/></svg>`}
+function renderFavs(){$('favGrid').innerHTML=favs().map(c=>{let a=state.analysis[c.ticker]||analyze(c.ticker,state.data[c.ticker]||gen(c.ticker));return `<div class="favcard" data-pick="${c.ticker}"><div><div><span class="star">★</span> <span class="ticker">${c.ticker}</span> <span class="signal ${cls(a.signal)}">${a.signal}</span></div><div class="small">${c.name}</div><div class="score ${cls(a.signal)}">${Math.round(a.score)}</div><div class="small">${fmt(a.price)} · RSI ${fmt(a.rsi,1)} · Vol ${fmt(a.volRatio,2)}x</div></div><div class="chartmini">${spark(c.ticker)}</div></div>`}).join('')||'<div class="small">Nessun preferito.</div>'}
+function renderCompanies(){let q=($('search')?.value||'').toLowerCase();$('companyList').innerHTML=state.companies.filter(c=>(c.ticker+c.name+c.sector).toLowerCase().includes(q)).map(c=>`<div class="companyItem"><button class="starbtn ${c.favorite?'on':''}" data-star="${c.ticker}">${c.favorite?'★':'☆'}</button><div><b>${c.ticker}</b><div class="small">${c.name} · ${c.sector||'-'}</div></div><button class="secondary" data-pick="${c.ticker}">Apri</button></div>`).join('')}
+function renderDetail(){let t=state.selected||favs()[0]?.ticker,c=state.companies.find(x=>x.ticker===t);if(!c)return;$('detailTitle').textContent=t+' · '+c.name;let a=state.analysis[t]||analyze(t,state.data[t]||gen(t));$('detailBox').innerHTML=`<div class="chartmini" style="height:180px">${spark(t)}</div><div class="status ${a.signal==='ATTENDI'?'warn':'ok'}" style="margin-top:12px"><b>${a.signal}</b> · Score ${Math.round(a.score)}/100<br>Prezzo ${fmt(a.price)} · RSI ${fmt(a.rsi,1)} · Volume ${fmt(a.volRatio,2)}x<br>${a.reasons.join(' · ')}</div><div class="card" style="margin:12px 0 0"><b>Note</b><div class="small">${c.notes||'Nessuna nota'}</div></div>`}
+function render(){renderFavs();renderCompanies();renderDetail()}function timerSet(){if(timer)clearInterval(timer);let m=+$('refresh').value;if(m>0)timer=setInterval(scan,m*60000)}
+window.__TBA={
+  getState:()=>JSON.parse(JSON.stringify(state)),
+  setState:(newState)=>{
+    if(newState&&typeof newState==='object'){
+      state={...state,...newState};
+      if(!Array.isArray(state.companies))state.companies=[];
+      if(!state.data)state.data={};
+      if(!state.analysis)state.analysis={};
+      save();
+      render();
+    }
+  },
+  saveLocal:save,
+  renderAll:render
 };
-
-function saveLocal(){
-localStorage.setItem('tb_assistente_state', JSON.stringify(state));
-}
-
-function loadLocal(){
-try{
-const s = localStorage.getItem('tb_assistente_state');
-if(s){
-state = JSON.parse(s);
-}
-}catch(e){
-console.error(e);
-}
-}
-
-function seed(){
-state.companies = [
-{ticker:'NVDA',name:'NVIDIA',market:'USA',sector:'AI',favorite:true},
-{ticker:'PLTR',name:'Palantir',market:'USA',sector:'Software',favorite:true},
-{ticker:'TSLA',name:'Tesla',market:'USA',sector:'EV',favorite:true},
-{ticker:'META',name:'Meta',market:'USA',sector:'Big Tech',favorite:false}
-];
-
-saveLocal();
-render();
-}
-
-function addCompany(){
-
-const ticker = $('cTicker').value.trim().toUpperCase();
-
-if(!ticker){
-alert('Ticker mancante');
-return;
-}
-
-const company = {
-ticker,
-name:$('cName').value.trim(),
-market:$('cMarket').value.trim(),
-sector:$('cSector').value.trim(),
-favorite:$('cFav').value === 'true',
-notes:$('cNotes').value.trim()
-};
-
-const existing = state.companies.findIndex(c => c.ticker === ticker);
-
-if(existing >= 0){
-state.companies[existing] = company;
-}else{
-state.companies.push(company);
-}
-
-saveLocal();
-render();
-}
-
-function toggleFav(ticker){
-
-const c = state.companies.find(x => x.ticker === ticker);
-
-if(c){
-c.favorite = !c.favorite;
-}
-
-saveLocal();
-render();
-}
-
-function render(){
-
-const box = $('companyList');
-
-box.innerHTML = '';
-
-state.companies.forEach(c => {
-
-const div = document.createElement('div');
-
-div.className = 'companyItem';
-
-div.innerHTML = `
-<button class="starbtn ${c.favorite ? 'on' : ''}" onclick="toggleFav('${c.ticker}')">
-⭐
-</button>
-
-<div>
-<div style="font-weight:900">${c.ticker}</div>
-<div style="font-size:12px;color:#aaa">${c.name}</div>
-</div>
-
-<div>${c.market}</div>
-`;
-
-box.appendChild(div);
-
-});
-}
-
-loadLocal();
-
-if(!state.companies.length){
-seed();
-}
-
-render();
-
+document.addEventListener('click',e=>{let v=e.target.closest('[data-view]');if(v)show(v.dataset.view);let a=e.target.closest('[data-action]');if(a){let x=a.dataset.action;if(x==='menu')$('drawer').classList.add('show');if(x==='closeMenu')$('drawer').classList.remove('show');if(x==='addCompany')addCompany();if(x==='seed')seed();if(x==='scan')scan();if(x==='test')test()}let s=e.target.closest('[data-star]');if(s)toggleFav(s.dataset.star);let p=e.target.closest('[data-pick]');if(p){state.selected=p.dataset.pick;show('detail')}});document.addEventListener('input',e=>{if(e.target.id==='search')renderCompanies()});load();render();scan();
+})();
 </script>
-
-
-<!-- FIREBASE -->
-
 <script type="module">
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-getFirestore,
-doc,
-setDoc,
-getDoc
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-import {
-getAuth,
-signInAnonymously,
-onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
+import { getFirestore, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
-apiKey: "AIzaSyBQQvok7FB4DYidTA9qDOS6YXwysmThDUk",
-authDomain: "tb-assistente.firebaseapp.com",
-projectId: "tb-assistente",
-storageBucket: "tb-assistente.firebasestorage.app",
-messagingSenderId: "325860873767",
-appId: "1:325860873767:web:61ada65c80554d8489e002"
+  apiKey: "AIzaSyBQQvok7FB4DYidTA9qDOS6YXwysmThDUk",
+  authDomain: "tb-assistente.firebaseapp.com",
+  projectId: "tb-assistente",
+  storageBucket: "tb-assistente.firebasestorage.app",
+  messagingSenderId: "325860873767",
+  appId: "1:325860873767:web:61ada65c80554d8489e002"
 };
-
 
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore(app);
-
 const auth = getAuth(app);
-
 let currentUser = null;
 
+const cloudStatus = document.getElementById('cloudStatus');
+const cloudMeta = document.getElementById('cloudMeta');
+const saveBtn = document.getElementById('cloudSaveBtn');
+const loadBtn = document.getElementById('cloudLoadBtn');
 
-function setCloudStatus(text, type='ok'){
+function setCloudStatus(text, type='warn'){
+  if(!cloudStatus)return;
+  cloudStatus.className = 'status ' + type;
+  cloudStatus.textContent = text;
+}
+function setCloudMeta(text){ if(cloudMeta) cloudMeta.textContent = text || ''; }
+function userDoc(){ return doc(db, 'users', currentUser.uid, 'tb_assistente', 'state'); }
 
-const el = document.getElementById('cloudStatus');
-
-el.className = 'status ' + type;
-
-el.innerHTML = text;
+async function waitTBA(){
+  for(let i=0;i<40;i++){
+    if(window.__TBA) return window.__TBA;
+    await new Promise(r=>setTimeout(r,100));
+  }
+  throw new Error('App TB Assistente non pronta');
 }
 
-
-signInAnonymously(auth)
-.then(() => {
-setCloudStatus('☁️ Login Firebase OK', 'ok');
-})
-.catch((error) => {
-console.error(error);
-setCloudStatus('Errore login Firebase', 'bad');
+signInAnonymously(auth).catch((error)=>{
+  console.error('Firebase auth error:', error);
+  setCloudStatus('Errore login Firebase: ' + error.message, 'bad');
 });
 
-
-onAuthStateChanged(auth, (user) => {
-
-if(user){
-currentUser = user;
-console.log('UID:', user.uid);
-}
-
+onAuthStateChanged(auth, (user)=>{
+  if(user){
+    currentUser = user;
+    setCloudStatus('☁️ Firebase connesso. Puoi salvare online.', 'ok');
+    setCloudMeta('UID dispositivo: ' + user.uid);
+  }
 });
 
-
-window.saveCloud = async function(data){
-
-if(!currentUser){
-alert('Utente non pronto');
-return;
-}
-
-try{
-
-await setDoc(
-doc(db, 'users', currentUser.uid, 'tb_assistente', 'state'),
-{
-updatedAt: new Date().toISOString(),
-data: data
-}
-);
-
-setCloudStatus('☁️ Salvataggio online completato', 'ok');
-
-}catch(e){
-
-console.error(e);
-
-setCloudStatus('Errore salvataggio cloud', 'bad');
-
-}
-
+window.saveCloud = async function(){
+  if(!currentUser){ setCloudStatus('Firebase non ancora pronto. Riprova tra qualche secondo.', 'warn'); return; }
+  try{
+    const tba = await waitTBA();
+    const payload = {
+      schema: 'tb-assistente-v3.2',
+      updatedAt: new Date().toISOString(),
+      updatedAtServer: serverTimestamp(),
+      data: tba.getState()
+    };
+    await setDoc(userDoc(), payload, { merge: true });
+    setCloudStatus('☁️ Salvataggio online completato.', 'ok');
+    setCloudMeta('Ultimo salvataggio: ' + payload.updatedAt);
+  }catch(e){
+    console.error('Cloud save error:', e);
+    setCloudStatus('Errore salvataggio cloud: ' + e.message, 'bad');
+  }
 };
 
-
 window.loadCloud = async function(){
-```
+  if(!currentUser){ setCloudStatus('Firebase non ancora pronto. Riprova tra qualche secondo.', 'warn'); return; }
+  try{
+    const snap = await getDoc(userDoc());
+    if(!snap.exists()){
+      setCloudStatus('Nessun dato cloud trovato per questo dispositivo/login.', 'warn');
+      return;
+    }
+    const saved = snap.data();
+    const tba = await waitTBA();
+    tba.setState(saved.data || {});
+    setCloudStatus('☁️ Dati cloud caricati correttamente.', 'ok');
+    setCloudMeta('Ultimo salvataggio cloud: ' + (saved.updatedAt || 'non disponibile'));
+  }catch(e){
+    console.error('Cloud load error:', e);
+    setCloudStatus('Errore caricamento cloud: ' + e.message, 'bad');
+  }
+};
+
+if(saveBtn) saveBtn.addEventListener('click', ()=>window.saveCloud());
+if(loadBtn) loadBtn.addEventListener('click', ()=>window.loadCloud());
+</script>
+</body></html>
