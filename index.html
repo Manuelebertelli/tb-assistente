@@ -1,4 +1,4 @@
-<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>TB Assistente v3.8 Sync Verified</title>
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>TB Assistente v3.9 Sync Verified</title>
 <style>
 :root{--bg:#050506;--card:#151517;--line:#ffffff18;--txt:#f5f5f7;--mut:#9b9ba2;--g:#30d158;--r:#ff453a;--o:#ff9f0a;--y:#ffd60a}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;background:radial-gradient(circle at top right,#202a3a,#050506 42%);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;padding-bottom:74px}
@@ -11,13 +11,13 @@ main{padding:14px;max-width:850px;margin:auto}.view{display:none}.view.active{di
 .drawer{position:fixed;inset:0;display:none;z-index:90}.drawer.show{display:block}.scrim{position:absolute;inset:0;background:#000a}.panel{position:absolute;left:0;top:0;bottom:0;width:min(84vw,330px);background:#0d0d0fcc;backdrop-filter:blur(24px);border-right:1px solid var(--line);padding:calc(18px + env(safe-area-inset-top)) 14px}.menu button{width:100%;margin-bottom:9px;text-align:left;background:#18181b;color:#fff;border:1px solid var(--line)}.fab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:40;width:56px;height:56px;padding:0;border-radius:21px}
 @media(min-width:700px){.favgrid{grid-template-columns:1fr 1fr}.favcard{grid-template-columns:1fr 130px}}
 </style></head><body>
-<header><div class="top"><button class="icon" data-action="menu">☰</button><div class="grow"><div class="title" id="title">TB Assistente v.3.8</div><div class="sub" id="subtitle">Clima Rush Sync · ApexCharts</div></div><button class="chip" data-view="data"><span class="dot" id="dataDot"></span><span id="dataText">Dati</span></button></div></header>
+<header><div class="top"><button class="icon" data-action="menu">☰</button><div class="grow"><div class="title" id="title">TB Assistente v.3.9</div><div class="sub" id="subtitle">Clima Rush Sync · ApexCharts</div></div><button class="chip" data-view="data"><span class="dot" id="dataDot"></span><span id="dataText">Dati</span></button></div></header>
 <main>
-<section id="dashboard" class="view active"><div class="hero"><div class="small">TB Assistente v.3.8 · Dashboard preferiti</div><div style="font-size:34px;font-weight:950;letter-spacing:-.07em">Top monitoraggio</div><div class="small">Fino a 10 preferiti con grafici ApexCharts, score e segnale operativo.</div><div id="homeSyncStatus" class="small" style="margin-top:8px">☁️ Sync: in attesa configurazione</div><div class="btnrow" style="margin-top:14px"><button data-action="scan">Aggiorna preferiti</button><button class="secondary" data-view="companies">Anagrafica</button></div></div><div class="metricgrid"><div class="metric"><div class="small">Preferiti</div><b id="metricFavs">0</b></div><div class="metric"><div class="small">Segnali LONG</div><b id="metricLong">0</b></div><div class="metric"><div class="small">Score medio</div><b id="metricScore">-</b></div></div><div class="card"><h2>⭐ Preferiti in vista chart</h2><div class="toolbar"><button class="pill active" type="button">1D</button><button class="pill" type="button">5D</button><button class="pill" type="button">1M</button><button class="pill" type="button">6M</button></div><div id="favGrid" class="favgrid"></div></div></section>
+<section id="dashboard" class="view active"><div class="hero"><div class="small">TB Assistente v.3.9 · Dashboard preferiti</div><div style="font-size:34px;font-weight:950;letter-spacing:-.07em">Top monitoraggio</div><div class="small">Fino a 10 preferiti con grafici ApexCharts, score e segnale operativo.</div><div id="homeSyncStatus" class="small" style="margin-top:8px">☁️ Sync: in attesa configurazione</div><div class="btnrow" style="margin-top:14px"><button data-action="scan">Aggiorna preferiti</button><button class="secondary" data-view="companies">Anagrafica</button></div></div><div class="metricgrid"><div class="metric"><div class="small">Preferiti</div><b id="metricFavs">0</b></div><div class="metric"><div class="small">Segnali LONG</div><b id="metricLong">0</b></div><div class="metric"><div class="small">Score medio</div><b id="metricScore">-</b></div></div><div class="card"><h2>⭐ Preferiti in vista chart</h2><div class="toolbar"><button class="pill active" type="button">1D</button><button class="pill" type="button">5D</button><button class="pill" type="button">1M</button><button class="pill" type="button">6M</button></div><div id="favGrid" class="favgrid"></div></div></section>
 <section id="companies" class="view"><div class="card"><h2>Anagrafica aziende</h2><div class="row"><div><label>Ticker</label><input id="cTicker" placeholder="NVDA"></div><div><label>Mercato</label><input id="cMarket" placeholder="USA"></div></div><label>Nome azienda</label><input id="cName" placeholder="NVIDIA Corp"><div class="row"><div><label>Settore</label><input id="cSector" placeholder="Semiconduttori"></div><div><label>Preferito</label><select id="cFav"><option value="true">Sì ⭐</option><option value="false">No</option></select></div></div><label>Note</label><input id="cNotes" placeholder="Perché la monitoro?"><div class="btnrow" style="margin-top:12px"><button data-action="addCompany">Aggiungi / aggiorna</button><button class="secondary" data-action="seed">Default</button></div></div><div class="card"><h2>Lista aziende</h2><input id="search" placeholder="Cerca ticker, nome, settore..."><div id="companyList" style="margin-top:12px"></div></div></section>
 <section id="data" class="view"><div class="card"><h2>Dati esterni</h2><label>Provider</label><select id="provider"><option value="demo">Demo</option><option value="twelvedata">Twelve Data LIVE</option></select><label>API Key Twelve Data</label><input id="apiKey"><div class="row"><div><label>Intervallo</label><select id="interval"><option value="5min">5m</option><option value="15min" selected>15m</option><option value="30min">30m</option><option value="1h">1h</option><option value="1day">Daily</option></select></div><div><label>Refresh</label><select id="refresh"><option value="0">Off</option><option value="5">5m</option><option value="15">15m</option></select></div></div><div class="btnrow" style="margin-top:12px"><button data-action="test">Test API</button><button class="secondary" data-action="scan">Importa preferiti</button></div><div id="dataStatus" class="status warn" style="margin-top:12px">Dati non testati.</div><div class="cloudBox"><h2>☁️ Cloud Sync</h2><div class="small">Sync automatico stile Clima Rush: carica cloud all’avvio e salva online dopo ogni modifica.</div><div class="btnrow" style="margin-top:12px"><button data-view="settings">Apri impostazioni</button></div></div></div></section>
 
-<section id="settings" class="view"><div class="card"><h2>⚙️ Impostazioni</h2><div class="small">TB Assistente v.3.8 · configurazione generale e connessioni online.</div></div><div class="card"><h2>🔌 Connessioni</h2><label>URL Web App Apps Script</label><input id="sheetApiUrl" placeholder="https://script.google.com/macros/s/.../exec"><label>Codice archivio</label><input id="sheetArchiveKey" placeholder="es. meme-tb-assistente"><div class="small" style="margin-top:8px">Usa lo stesso codice su Mac e iPhone per leggere/scrivere lo stesso archivio cloud.</div><div class="btnrow" style="margin-top:12px"><button id="sheetSaveSettingsBtn" type="button">Salva impostazioni</button><button id="sheetPingBtn" type="button" class="secondary">Test connessione</button></div><div class="cloudGrid" style="margin-top:12px"><button id="cloudSaveBtn" type="button">☁️ Salva Online</button><button id="cloudLoadBtn" type="button" class="secondary">☁️ Carica Online</button></div><div id="cloudStatus" class="status warn" style="margin-top:12px">Connessione Google Sheet non configurata. Dopo aver inserito l’URL, il sync automatico parte da solo.</div><div id="cloudMeta" class="cloudMeta"></div></div></section>
+<section id="settings" class="view"><div class="card"><h2>⚙️ Impostazioni</h2><div class="small">TB Assistente v.3.9 · configurazione generale e connessioni online.</div></div><div class="card"><h2>🔌 Connessioni</h2><label>URL Web App Apps Script</label><input id="sheetApiUrl" placeholder="https://script.google.com/macros/s/.../exec"><label>Codice archivio</label><input id="sheetArchiveKey" placeholder="es. meme-tb-assistente"><div class="small" style="margin-top:8px">Usa lo stesso codice su Mac e iPhone per leggere/scrivere lo stesso archivio cloud.</div><div class="btnrow" style="margin-top:12px"><button id="sheetSaveSettingsBtn" type="button">Salva impostazioni</button><button id="sheetPingBtn" type="button" class="secondary">Test connessione</button></div><div class="cloudGrid" style="margin-top:12px"><button id="cloudSaveBtn" type="button">☁️ Salva Online</button><button id="cloudLoadBtn" type="button" class="secondary">☁️ Carica Online</button></div><div id="cloudStatus" class="status warn" style="margin-top:12px">Connessione Google Sheet non configurata. Dopo aver inserito l’URL, il sync automatico parte da solo.</div><div id="cloudMeta" class="cloudMeta"></div></div></section>
 <section id="detail" class="view"><div class="card"><h2 id="detailTitle">Dettaglio</h2><div id="detailBox"></div></div></section>
 </main><button class="fab" data-view="companies">⭐</button>
 <div id="drawer" class="drawer"><div class="scrim" data-action="closeMenu"></div><div class="panel"><h2>Menu</h2><div class="menu"><button data-view="dashboard">🏠 Dashboard</button><button data-view="companies">🏢 Anagrafica</button><button data-view="data">🔌 Dati esterni</button><button data-view="settings">⚙️ Impostazioni</button><button data-view="detail">📈 Dettaglio</button></div></div></div>
@@ -27,7 +27,7 @@ main{padding:14px;max-width:850px;margin:auto}.view{display:none}.view.active{di
 function fmt(n,d=2){n=Number(n);return Number.isFinite(n)?n.toFixed(d):'-'}function cls(s){return s==='LONG'?'long':s==='SHORT'?'short':'wait'}
 function save(){['provider','apiKey','interval','refresh'].forEach(id=>{if($(id))localStorage.setItem('tba24_'+id,$(id).value)});localStorage.setItem('tba24_state',JSON.stringify(state));timerSet();if(!window.__TBA_SUPPRESS_AUTOSAVE){document.dispatchEvent(new CustomEvent('tba:state-saved',{detail:{state:JSON.parse(JSON.stringify(state)),at:new Date().toISOString()}}));}}
 function load(){try{let s=localStorage.getItem('tba24_state');if(s)state=JSON.parse(s)}catch(e){}['provider','apiKey','interval','refresh'].forEach(id=>{let v=localStorage.getItem('tba24_'+id);if(v!==null&&$(id))$(id).value=v});if(!state.companies||!state.companies.length)seed(false)}
-function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));$(id).classList.add('active');$('drawer').classList.remove('show');let m={dashboard:['Dashboard','10 preferiti in vista chart'],companies:['Anagrafica','Aziende monitorate e stelline'],data:['Dati esterni','Provider e import'],settings:['Impostazioni','Connessioni e cloud save'],detail:['Dettaglio','Scheda azienda']};$('title').textContent=m[id]?.[0]||'TB Assistente v.3.8';$('subtitle').textContent=m[id]?.[1]||'Clima Rush Sync · ApexCharts';render()}
+function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));$(id).classList.add('active');$('drawer').classList.remove('show');let m={dashboard:['Dashboard','10 preferiti in vista chart'],companies:['Anagrafica','Aziende monitorate e stelline'],data:['Dati esterni','Provider e import'],settings:['Impostazioni','Connessioni e cloud save'],detail:['Dettaglio','Scheda azienda']};$('title').textContent=m[id]?.[0]||'TB Assistente v.3.9';$('subtitle').textContent=m[id]?.[1]||'Clima Rush Sync · ApexCharts';render()}
 function setData(k,t){$('dataDot').className='dot '+(k==='ok'?'ok':k==='bad'?'bad':'');$('dataText').textContent=t;$('dataStatus').className='status '+(k==='ok'?'ok':k==='bad'?'bad':'warn');$('dataStatus').textContent=t}
 function seed(alertIt=true){state.companies=[['NVDA','NVIDIA Corp','AI / Semiconduttori'],['TSLA','Tesla Inc','EV / Tech'],['AMD','Advanced Micro Devices','Semiconduttori'],['PLTR','Palantir Technologies','AI / Software'],['META','Meta Platforms','Big Tech'],['AAPL','Apple Inc','Big Tech'],['MSFT','Microsoft Corp','Cloud / AI'],['GOOGL','Alphabet Inc','Big Tech'],['AMZN','Amazon.com Inc','Cloud / E-commerce'],['AVGO','Broadcom Inc','Semiconduttori']].map(x=>({ticker:x[0],name:x[1],market:'USA',sector:x[2],favorite:true,notes:''}));save();render();if(alertIt)alert('Default caricati')}
 function addCompany(){let t=$('cTicker').value.trim().toUpperCase();if(!t)return alert('Ticker mancante');let c={ticker:t,name:$('cName').value.trim()||t,market:$('cMarket').value.trim()||'USA',sector:$('cSector').value.trim(),favorite:$('cFav').value==='true',notes:$('cNotes').value.trim()};let i=state.companies.findIndex(x=>x.ticker===t);if(i>=0)state.companies[i]=c;else state.companies.push(c);['cTicker','cName','cMarket','cSector','cNotes'].forEach(id=>$(id).value='');save();render()}
@@ -83,13 +83,13 @@ window.__TBA={
   saveLocal:save,
   renderAll:render
 };
-document.addEventListener('click',e=>{let v=e.target.closest('[data-view]');if(v)show(v.dataset.view);let a=e.target.closest('[data-action]');if(a){let x=a.dataset.action;if(x==='menu')$('drawer').classList.add('show');if(x==='closeMenu')$('drawer').classList.remove('show');if(x==='addCompany')addCompany();if(x==='seed')seed();if(x==='scan')scan();if(x==='test')test()}let s=e.target.closest('[data-star]');if(s)toggleFav(s.dataset.star);let p=e.target.closest('[data-pick]');if(p){state.selected=p.dataset.pick;show('detail')}});document.addEventListener('input',e=>{if(e.target.id==='search')renderCompanies()});load();render();/* v3.8: niente scan automatico all'avvio prima del cloud: evita sovrascritture accidentali */
+document.addEventListener('click',e=>{let v=e.target.closest('[data-view]');if(v)show(v.dataset.view);let a=e.target.closest('[data-action]');if(a){let x=a.dataset.action;if(x==='menu')$('drawer').classList.add('show');if(x==='closeMenu')$('drawer').classList.remove('show');if(x==='addCompany')addCompany();if(x==='seed')seed();if(x==='scan')scan();if(x==='test')test()}let s=e.target.closest('[data-star]');if(s)toggleFav(s.dataset.star);let p=e.target.closest('[data-pick]');if(p){state.selected=p.dataset.pick;show('detail')}});document.addEventListener('input',e=>{if(e.target.id==='search')renderCompanies()});load();render();/* v3.9: niente scan automatico all'avvio prima del cloud: evita sovrascritture accidentali */
 })();
 </script>
 
 <script>
 (function(){
-const APP_VERSION = 'TB Assistente v.3.8';
+const APP_VERSION = 'TB Assistente v.3.9';
 const $ = id => document.getElementById(id);
 
 function setCloudStatus(text, type='warn'){
@@ -163,7 +163,7 @@ window.saveCloud = async function(options={}){
   try{
     const savedAt = new Date().toISOString();
     const payloadObj = {
-      schema:'tb-assistente-v3.8-sync-verified',
+      schema:'tb-assistente-v3.9-jsonp-chunk-sync',
       version:APP_VERSION,
       savedAt,
       state:window.__TBA.getState()
@@ -173,39 +173,35 @@ window.saveCloud = async function(options={}){
     if(!options.auto) setCloudStatus('Salvataggio cloud in corso...', 'warn');
     else setCloudStatus('Autosave cloud in corso...', 'warn');
 
-    const iframeName = 'tba_save_frame';
-    let iframe = document.querySelector('iframe[name="'+iframeName+'"]');
-    if(!iframe){
-      iframe = document.createElement('iframe');
-      iframe.name = iframeName;
-      iframe.style.display = 'none';
-      document.body.appendChild(iframe);
+    // v3.9: niente POST/iframe. Solo JSONP GET a blocchi: molto più stabile da iPhone/GitHub Pages.
+    const session = 's_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+    const chunkSize = 1800;
+    const chunks = [];
+    for(let i=0;i<payload.length;i+=chunkSize){
+      chunks.push(payload.slice(i, i + chunkSize));
     }
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = url;
-    form.target = iframeName;
-    form.style.display = 'none';
-    const fields = {action:'save', key:getArchiveKey(), payload};
-    Object.entries(fields).forEach(([k,v])=>{
-      const input = document.createElement('input');
-      input.type='hidden'; input.name=k; input.value=v;
-      form.appendChild(input);
-    });
-    document.body.appendChild(form);
-    form.submit();
-    form.remove();
 
-    await new Promise(r=>setTimeout(r, 1700));
+    setCloudMeta(APP_VERSION + ' · Invio ' + chunks.length + ' blocchi · Archivio: ' + getArchiveKey());
+
+    for(let i=0;i<chunks.length;i++){
+      const res = await jsonp('chunk', {
+        session,
+        index:String(i),
+        total:String(chunks.length),
+        chunk:chunks[i]
+      });
+      if(!res || !res.ok) throw new Error(res?.error || 'Errore invio blocco ' + (i+1));
+    }
+
+    const commit = await jsonp('commit', {session, total:String(chunks.length)});
+    if(!commit || !commit.ok) throw new Error(commit?.error || 'Commit salvataggio non riuscito');
+
+    await new Promise(r=>setTimeout(r, 500));
+    const res = await jsonp('load');
     let verified = false;
-    try{
-      const res = await jsonp('load');
-      if(res && res.ok && res.payload){
-        const parsed = typeof res.payload === 'string' ? JSON.parse(res.payload) : res.payload;
-        verified = parsed && parsed.savedAt === savedAt;
-      }
-    }catch(verr){
-      console.warn('Verifica salvataggio non riuscita', verr);
+    if(res && res.ok && res.payload){
+      const parsed = typeof res.payload === 'string' ? JSON.parse(res.payload) : res.payload;
+      verified = parsed && parsed.savedAt === savedAt;
     }
 
     localStorage.setItem('tba_last_cloud_save', savedAt);
@@ -213,11 +209,12 @@ window.saveCloud = async function(options={}){
       setCloudStatus(options.auto ? 'Autosave cloud verificato.' : '☁️ Salvataggio online verificato.', 'ok');
       setCloudMeta(APP_VERSION + ' · Ultimo salvataggio verificato: ' + new Date(savedAt).toLocaleString('it-IT') + ' · Archivio: ' + getArchiveKey());
     }else{
-      setCloudStatus('Salvataggio inviato, ma NON verificato. Controlla Apps Script: Esegui come me + Accesso chiunque.', 'bad');
+      setCloudStatus('Salvataggio NON verificato: il dato non coincide dopo la rilettura.', 'bad');
       setCloudMeta(APP_VERSION + ' · Archivio: ' + getArchiveKey());
     }
   }catch(e){
     setCloudStatus('Errore salvataggio online: ' + e.message, 'bad');
+    setCloudMeta(APP_VERSION + ' · Archivio: ' + getArchiveKey());
   }
 };
 
