@@ -1,4 +1,4 @@
-<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>TB Assistente v3.2 Cloud</title>
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>TB Assistente v3.3 Google Sync</title>
 <style>
 :root{--bg:#050506;--card:#151517;--line:#ffffff18;--txt:#f5f5f7;--mut:#9b9ba2;--g:#30d158;--r:#ff453a;--o:#ff9f0a;--y:#ffd60a}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;background:radial-gradient(circle at top right,#202a3a,#050506 42%);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;padding-bottom:74px}
@@ -11,11 +11,11 @@ main{padding:14px;max-width:850px;margin:auto}.view{display:none}.view.active{di
 .drawer{position:fixed;inset:0;display:none;z-index:90}.drawer.show{display:block}.scrim{position:absolute;inset:0;background:#000a}.panel{position:absolute;left:0;top:0;bottom:0;width:min(84vw,330px);background:#0d0d0fcc;backdrop-filter:blur(24px);border-right:1px solid var(--line);padding:calc(18px + env(safe-area-inset-top)) 14px}.menu button{width:100%;margin-bottom:9px;text-align:left;background:#18181b;color:#fff;border:1px solid var(--line)}.fab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:40;width:56px;height:56px;padding:0;border-radius:21px}
 @media(min-width:700px){.favgrid{grid-template-columns:1fr 1fr}.favcard{grid-template-columns:1fr 130px}}
 </style></head><body>
-<header><div class="top"><button class="icon" data-action="menu">☰</button><div class="grow"><div class="title" id="title">TB Assistente</div><div class="sub" id="subtitle">Dashboard + Firebase Cloud Save</div></div><button class="chip" data-view="data"><span class="dot" id="dataDot"></span><span id="dataText">Dati</span></button></div></header>
+<header><div class="top"><button class="icon" data-action="menu">☰</button><div class="grow"><div class="title" id="title">TB Assistente</div><div class="sub" id="subtitle">Dashboard + Firebase Google Sync</div></div><button class="chip" data-view="data"><span class="dot" id="dataDot"></span><span id="dataText">Dati</span></button></div></header>
 <main>
 <section id="dashboard" class="view active"><div class="hero"><div class="small">Dashboard preferiti</div><div style="font-size:34px;font-weight:950;letter-spacing:-.07em">Top monitoraggio</div><div class="small">Fino a 10 aziende preferite con mini-chart e score.</div><div class="btnrow" style="margin-top:14px"><button data-action="scan">Aggiorna preferiti</button><button class="secondary" data-view="companies">Anagrafica</button></div></div><div class="card"><h2>⭐ Preferiti in vista chart</h2><div id="favGrid" class="favgrid"></div></div></section>
 <section id="companies" class="view"><div class="card"><h2>Anagrafica aziende</h2><div class="row"><div><label>Ticker</label><input id="cTicker" placeholder="NVDA"></div><div><label>Mercato</label><input id="cMarket" placeholder="USA"></div></div><label>Nome azienda</label><input id="cName" placeholder="NVIDIA Corp"><div class="row"><div><label>Settore</label><input id="cSector" placeholder="Semiconduttori"></div><div><label>Preferito</label><select id="cFav"><option value="true">Sì ⭐</option><option value="false">No</option></select></div></div><label>Note</label><input id="cNotes" placeholder="Perché la monitoro?"><div class="btnrow" style="margin-top:12px"><button data-action="addCompany">Aggiungi / aggiorna</button><button class="secondary" data-action="seed">Default</button></div></div><div class="card"><h2>Lista aziende</h2><input id="search" placeholder="Cerca ticker, nome, settore..."><div id="companyList" style="margin-top:12px"></div></div></section>
-<section id="data" class="view"><div class="card"><h2>Dati esterni</h2><label>Provider</label><select id="provider"><option value="demo">Demo</option><option value="twelvedata">Twelve Data LIVE</option></select><label>API Key Twelve Data</label><input id="apiKey"><div class="row"><div><label>Intervallo</label><select id="interval"><option value="5min">5m</option><option value="15min" selected>15m</option><option value="30min">30m</option><option value="1h">1h</option><option value="1day">Daily</option></select></div><div><label>Refresh</label><select id="refresh"><option value="0">Off</option><option value="5">5m</option><option value="15">15m</option></select></div></div><div class="btnrow" style="margin-top:12px"><button data-action="test">Test API</button><button class="secondary" data-action="scan">Importa preferiti</button></div><div id="dataStatus" class="status warn" style="margin-top:12px">Dati non testati.</div><div class="cloudBox"><h2>☁️ Cloud Sync</h2><div class="small">Salva e recupera anagrafica, preferiti, dati e analisi su Firebase.</div><div class="cloudGrid" style="margin-top:12px"><button id="cloudSaveBtn" type="button">☁️ Salva Online</button><button id="cloudLoadBtn" type="button" class="secondary">☁️ Carica Online</button></div><div id="cloudStatus" class="status warn" style="margin-top:12px">Firebase in avvio...</div><div id="cloudMeta" class="cloudMeta"></div></div></div></section>
+<section id="data" class="view"><div class="card"><h2>Dati esterni</h2><label>Provider</label><select id="provider"><option value="demo">Demo</option><option value="twelvedata">Twelve Data LIVE</option></select><label>API Key Twelve Data</label><input id="apiKey"><div class="row"><div><label>Intervallo</label><select id="interval"><option value="5min">5m</option><option value="15min" selected>15m</option><option value="30min">30m</option><option value="1h">1h</option><option value="1day">Daily</option></select></div><div><label>Refresh</label><select id="refresh"><option value="0">Off</option><option value="5">5m</option><option value="15">15m</option></select></div></div><div class="btnrow" style="margin-top:12px"><button data-action="test">Test API</button><button class="secondary" data-action="scan">Importa preferiti</button></div><div id="dataStatus" class="status warn" style="margin-top:12px">Dati non testati.</div><div class="cloudBox"><h2>☁️ Cloud Sync</h2><div class="small">Accedi con Google per sincronizzare gli stessi dati su Mac, iPhone e altri dispositivi.</div><div class="cloudGrid" style="margin-top:12px"><button id="googleLoginBtn" type="button">🔐 Accedi con Google</button><button id="googleLogoutBtn" type="button" class="secondary">Esci</button></div><div class="cloudGrid" style="margin-top:12px"><button id="cloudSaveBtn" type="button">☁️ Salva Online</button><button id="cloudLoadBtn" type="button" class="secondary">☁️ Carica Online</button></div><div id="cloudStatus" class="status warn" style="margin-top:12px">Firebase in avvio...</div><div id="cloudMeta" class="cloudMeta"></div></div></div></section>
 <section id="detail" class="view"><div class="card"><h2 id="detailTitle">Dettaglio</h2><div id="detailBox"></div></div></section>
 </main><button class="fab" data-view="companies">⭐</button>
 <div id="drawer" class="drawer"><div class="scrim" data-action="closeMenu"></div><div class="panel"><h2>Menu</h2><div class="menu"><button data-view="dashboard">🏠 Dashboard</button><button data-view="companies">🏢 Anagrafica</button><button data-view="data">🔌 Dati esterni</button><button data-view="detail">📈 Dettaglio</button></div></div></div>
@@ -64,7 +64,7 @@ document.addEventListener('click',e=>{let v=e.target.closest('[data-view]');if(v
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBQQvok7FB4DYidTA9qDOS6YXwysmThDUk",
@@ -84,6 +84,10 @@ const cloudStatus = document.getElementById('cloudStatus');
 const cloudMeta = document.getElementById('cloudMeta');
 const saveBtn = document.getElementById('cloudSaveBtn');
 const loadBtn = document.getElementById('cloudLoadBtn');
+const loginBtn = document.getElementById('googleLoginBtn');
+const logoutBtn = document.getElementById('googleLogoutBtn');
+const provider = new GoogleAuthProvider();
+provider.setCustomParameters({ prompt: 'select_account' });
 
 function setCloudStatus(text, type='warn'){
   if(!cloudStatus)return;
@@ -101,25 +105,51 @@ async function waitTBA(){
   throw new Error('App TB Assistente non pronta');
 }
 
-signInAnonymously(auth).catch((error)=>{
-  console.error('Firebase auth error:', error);
-  setCloudStatus('Errore login Firebase: ' + error.message, 'bad');
+getRedirectResult(auth).catch((error)=>{
+  console.error('Google redirect auth error:', error);
+  setCloudStatus('Errore login Google: ' + error.message, 'bad');
 });
 
 onAuthStateChanged(auth, (user)=>{
+  currentUser = user || null;
   if(user){
-    currentUser = user;
-    setCloudStatus('☁️ Firebase connesso. Puoi salvare online.', 'ok');
-    setCloudMeta('UID dispositivo: ' + user.uid);
+    setCloudStatus('☁️ Accesso Google OK. Sync multi-device attivo.', 'ok');
+    setCloudMeta('Account: ' + (user.email || user.uid));
+    if(loginBtn) loginBtn.style.display = 'none';
+    if(logoutBtn) logoutBtn.style.display = '';
+  } else {
+    setCloudStatus('Accedi con Google per sincronizzare Mac, iPhone e altri dispositivi.', 'warn');
+    setCloudMeta('');
+    if(loginBtn) loginBtn.style.display = '';
+    if(logoutBtn) logoutBtn.style.display = 'none';
   }
 });
 
+window.loginGoogle = async function(){
+  try{
+    await signInWithRedirect(auth, provider);
+  }catch(e){
+    console.error('Google login error:', e);
+    setCloudStatus('Errore avvio login Google: ' + e.message, 'bad');
+  }
+};
+
+window.logoutGoogle = async function(){
+  try{
+    await signOut(auth);
+    setCloudStatus('Logout completato. I dati locali restano su questo dispositivo.', 'warn');
+  }catch(e){
+    console.error('Google logout error:', e);
+    setCloudStatus('Errore logout: ' + e.message, 'bad');
+  }
+};
+
 window.saveCloud = async function(){
-  if(!currentUser){ setCloudStatus('Firebase non ancora pronto. Riprova tra qualche secondo.', 'warn'); return; }
+  if(!currentUser){ setCloudStatus('Devi prima accedere con Google.', 'warn'); return; }
   try{
     const tba = await waitTBA();
     const payload = {
-      schema: 'tb-assistente-v3.2',
+      schema: 'tb-assistente-v3.3-google-sync',
       updatedAt: new Date().toISOString(),
       updatedAtServer: serverTimestamp(),
       data: tba.getState()
@@ -134,11 +164,11 @@ window.saveCloud = async function(){
 };
 
 window.loadCloud = async function(){
-  if(!currentUser){ setCloudStatus('Firebase non ancora pronto. Riprova tra qualche secondo.', 'warn'); return; }
+  if(!currentUser){ setCloudStatus('Devi prima accedere con Google.', 'warn'); return; }
   try{
     const snap = await getDoc(userDoc());
     if(!snap.exists()){
-      setCloudStatus('Nessun dato cloud trovato per questo dispositivo/login.', 'warn');
+      setCloudStatus('Nessun dato cloud trovato per questo account Google.', 'warn');
       return;
     }
     const saved = snap.data();
@@ -152,6 +182,8 @@ window.loadCloud = async function(){
   }
 };
 
+if(loginBtn) loginBtn.addEventListener('click', ()=>window.loginGoogle());
+if(logoutBtn) logoutBtn.addEventListener('click', ()=>window.logoutGoogle());
 if(saveBtn) saveBtn.addEventListener('click', ()=>window.saveCloud());
 if(loadBtn) loadBtn.addEventListener('click', ()=>window.loadCloud());
 </script>
